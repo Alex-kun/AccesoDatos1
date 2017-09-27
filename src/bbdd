@@ -1,0 +1,76 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: localhost
+-- Tiempo de generación: 27-09-2017 a las 16:50:12
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 7.1.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `AccesoDatos`
+--
+CREATE DATABASE IF NOT EXISTS `AccesoDatos` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `AccesoDatos`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Personajes`
+--
+
+CREATE TABLE `Personajes` (
+  `id` int(11) NOT NULL,
+  `Nombre` varchar(20) NOT NULL,
+  `Rol` varchar(20) NOT NULL,
+  `Daño` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Personajes`
+--
+
+INSERT INTO `Personajes` (`id`, `Nombre`, `Rol`, `Daño`) VALUES
+(2, 'Galio', 'Top', 'Magico'),
+(3, 'Poppy', 'Top', 'Fisico'),
+(7, 'Rammus', 'Jungla', 'Magico'),
+(8, 'Xin Zhao', 'Jungla', 'Fisico'),
+(9, 'Yorick', 'Top', 'Fisico'),
+(10, 'Fiora', 'Top', 'Fisico'),
+(12, 'Varus', 'ADC', 'Fisico'),
+(13, 'Janna', 'Support', 'Magico'),
+(14, 'Evelynn', 'Jungla', 'Magico'),
+(16, 'Riven', 'Top', 'Fisico'),
+(17, 'Jayce', 'Top', 'Fisico');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `Personajes`
+--
+ALTER TABLE `Personajes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `Personajes`
+--
+ALTER TABLE `Personajes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
