@@ -1,15 +1,25 @@
 import java.sql.*;
 import java.util.HashMap;
+import java.util.Properties;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Conexion {
 	private static Connection conexion;
-	private String user = "root";
-	private String pwd = "";
-	private String db = "AccesoDatos";
-	private String url = "jdbc:mysql://localhost/" + db;
+	private String user;
+	private String pwd;
+	private String db;
+	private String url;
 	
 	public Conexion(){
+		
+			this.load();
+
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -25,6 +35,24 @@ public class Conexion {
 				e.printStackTrace();
 			}
 		} 
+	
+	public void load(){
+		FileInputStream fileIn = null;
+		try {
+			Properties configProperty = new Properties();
+			File file = new File("conf/config.ini");
+			fileIn = new FileInputStream(file);
+			configProperty.load(fileIn);
+			
+			user=configProperty.getProperty("user");
+			pwd=configProperty.getProperty("pwd");
+			db=configProperty.getProperty("db");
+			url=configProperty.getProperty("url") + db;
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void menu(){
 		System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
 		Scanner sc = new Scanner(System.in);
@@ -33,9 +61,10 @@ public class Conexion {
 		System.out.println("1: Consultar datos.");
 		System.out.println("2: Añadir un personaje.");
 		System.out.println("3: Añadir varios personajes a la vez.");
-		System.out.println("4: Eliminar un dato en concreto.");
-		System.out.println("5: Eliminar todos los datos.");
-		System.out.println("6: Salir.");
+		System.out.println("4: Añadir datos desde un fichero.");
+		System.out.println("5: Eliminar un dato en concreto.");
+		System.out.println("6: Eliminar todos los datos.");
+		System.out.println("7: Salir.");
 		System.out.println("---------------------------------");
 		System.out.println("Seleccione una opción:");
 		int option = sc.nextInt();
@@ -50,12 +79,15 @@ public class Conexion {
 			AñadirVarios();
 		}
 		else if (option == 4) {
-			BorrarOne();
+			AñadirFileData();
 		}
 		else if (option == 5) {
-			BorrarAll();
+			BorrarOne();
 		}
 		else if (option == 6) {
+			BorrarAll();
+		}
+		else if (option == 7) {
 			System.out.println("Hasta luego :)");
 		}
 		else {
@@ -136,9 +168,39 @@ public class Conexion {
 			}
 			System.out.println("Operación correcta!");
 		}
-		
-
 		menu();
+	}
+	
+	public void AñadirFileData(){
+
+		 String file = "dataToBBDD/dataToBBDD.ini";
+
+		 try {
+		     BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		     String line;
+		     // Uncomment the line below if you want to skip the fist line (e.g if headers)
+		     // line = br.readLine();
+
+		     while ((line = br.readLine()) != null) {
+		    	 //System.out.println(line);
+		    	 String query = "INSERT INTO `Personajes`( `Nombre`, `Rol`, `Daño`) VALUES ("+line+")";
+		    	 try {
+		 			Statement stmt = conexion.createStatement();
+		 			int rset = stmt.executeUpdate(query);
+		 		} catch (SQLException e) {
+		 			// TODO Auto-generated catch block
+		 			e.printStackTrace();
+		 		}
+		         // do something with line
+		     }
+		     br.close();
+		     System.out.println("¡Datos añadidos!");
+
+		 } catch (IOException e) {
+		     System.out.println("ERROR: unable to read file " + file);
+		     e.printStackTrace();   
+		 }
+		 menu();
 	}
 	public void BorrarAll(){
 		Scanner sc = new Scanner(System.in);
