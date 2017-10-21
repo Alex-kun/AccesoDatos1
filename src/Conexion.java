@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Conexion {
+public class Conexion implements Interface {
 	private static Connection conexion;
 	private String user;
 	private String pwd;
@@ -32,7 +32,8 @@ public class Conexion {
 				//System.out.println("- - - - - - - - - - - - - - - -");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Error en el acceso a la BBDD ");
+				System.exit(0);
 			}
 		} 
 	
@@ -252,5 +253,6 @@ public class Conexion {
 		}
 		menu();
 	}
+
 
 }
