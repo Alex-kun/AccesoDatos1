@@ -1,0 +1,3 @@
+24 | Zed | Fisico | Mid
+25 | Sion | Fisico | Top
+26 | Ahri | Magico | Mid

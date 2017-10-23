@@ -201,7 +201,9 @@ public class Conexion implements Interface {
 				personajes.put(rset.getString(columna), perso);
 				
 				pw.println(perso);
+				
 			}
+			pw.close();
 			// System.out.println(personajes.values());
 			rset.close();
 			stmt.close();
