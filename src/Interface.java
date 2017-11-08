@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public interface Interface {
 	public void menu();
@@ -7,4 +9,5 @@ public interface Interface {
 	public void AñadirFileData();
 	public void BorrarAll();
 	public void BorrarOne();
+	public void DataToFile() throws FileNotFoundException, UnsupportedEncodingException;
 }

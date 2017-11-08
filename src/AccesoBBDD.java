@@ -15,17 +15,16 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class Conexion implements Interface {
+public class AccesoBBDD implements Interface {
 	private static Connection conexion;
 	private String user;
 	private String pwd;
 	private String db;
 	private String url;
 
-	public Conexion() {
+	public AccesoBBDD() {
 
 		this.load();
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -90,15 +89,15 @@ public class Conexion implements Interface {
 		} else if (option == 6) {
 			BorrarAll();
 		} else if (option == 7) {
-			try{
+			try {
 				DataToFile();
-			} catch(IOException e){
+			} catch (IOException e) {
 				System.out.println("Error");
 			}
-		}
-		else if (option == 8) {
+		} else if (option == 8) {
 			System.out.println("Hasta luego :)");
-		}else {
+			System.exit(0);
+		} else {
 			System.out.println("Seleccione una opción válida.");
 		}
 	}
@@ -190,7 +189,7 @@ public class Conexion implements Interface {
 			ResultSet rset = stmt.executeQuery(query);
 			HashMap<String, Personaje> personajes = new HashMap<String, Personaje>();
 			PrintWriter pw = new PrintWriter("file.txt");
-			
+
 			while (rset.next()) {
 				int id = rset.getInt(1);
 				String nombre = rset.getString(2);
@@ -199,9 +198,9 @@ public class Conexion implements Interface {
 
 				Personaje perso = new Personaje(id, nombre, rol, tipo);
 				personajes.put(rset.getString(columna), perso);
-				
+
 				pw.println(perso);
-				
+
 			}
 			pw.close();
 			// System.out.println(personajes.values());
