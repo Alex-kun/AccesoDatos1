@@ -4,12 +4,14 @@ public class Personaje {
 	private String nombre;
 	private String rol;
 	private String tipo;
+	private Aspecto aspecto;
 	
 	Personaje(int id, String nombre, String rol, String tipo){
 		this.id = id;
 		this.nombre = nombre;
 		this.rol = rol;
 		this.tipo = tipo;
+		
 	}
 
 	public int getId() {

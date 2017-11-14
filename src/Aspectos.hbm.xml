@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
 
-	<class name="Personaje" table="Personajes">
+	<class name="Aspecto" table="Aspectos">
 	
 		<id name="id" type="int">
 			<column name="id" length="11"/>
@@ -12,17 +12,16 @@
 		</id>
 
 		<property name="nombre" type="string">
-			<column name="Nombre" length="20" not-null="true" />
+			<column name="NombreAspecto" length="30" not-null="true" />
 		</property>
 		
-		<property name="rol" type="string">
-			<column name="Rol" length="20" not-null="false" />
+		<property name="idpersonaje" type="int">
+			<column name="idPersonaje" length="10" not-null="false" />
 		</property>
 		
-		<property name="daño" type="string">
-			<column name="Daño" length="20" not-null="false" />
-		</property>
-					
+		<many-to-one name="Personaje" column="id" not-null="true" />	
+		
+		
 	</class>
 
 </hibernate-mapping>

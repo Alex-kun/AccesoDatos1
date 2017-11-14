@@ -13,6 +13,7 @@
 		<property name="hibernate.search.autoregister_listeners">false</property>
 		<property name="hibernate.validator.apply_to_ddl">false</property>
  		<mapping resource="Personajes.hbm.xml" />
+ 		<mapping resource="Aspectos.hbm.xml" />
 		
 	</session-factory>
 </hibernate-configuration>
