@@ -163,8 +163,18 @@ public class AccesoHibernate implements Interface{
 
 	@Override
 	public void BorrarOne() {
-		// TODO Auto-generated method stub
+		System.out.println("Inicio Borrado");
+		System.out.println("Escribe el id del personaje que quieres eliminar: ");
+		Scanner sc = new Scanner(System.in);
+		String id = sc.next();
 		
+		session.beginTransaction();
+
+		Query q = session.createQuery("delete from Personaje where id = '"+id+"'");
+		q.executeUpdate();
+		
+		session.getTransaction().commit();
+		System.out.println("Fin Borrado de id: " + id);
 	}
 
 	@Override
