@@ -9,6 +9,9 @@ public class Aspecto {
 		NombreAspecto = nombreAspecto;
 		this.idPersonaje = idPersonaje;
 	}
+	Aspecto(){
+		
+	}
 	public int getId() {
 		return id;
 	}

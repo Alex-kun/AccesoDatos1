@@ -81,7 +81,25 @@ public class AccesoHibernate implements Interface{
 
 	@Override
 	public void Añadir() {
-		// TODO Auto-generated method stub
+		
+		Personaje p1 = new Personaje();
+		p1.setNombre("Zoe");
+		p1.setRol("Mid");
+		p1.setTipo("Magico");
+		
+		Aspecto a1 = new Aspecto();
+		a1.setIdPersonaje(p1);
+		a1.setNombreAspecto("Zoe Hacker");
+		
+		
+		session.beginTransaction();
+
+		session.save(p1);
+		session.save(a1);
+		
+		session.getTransaction().commit();
+
+		System.out.println("Fin Inserción");
 		
 	}
 
