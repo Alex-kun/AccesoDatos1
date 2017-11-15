@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-09-2017 a las 16:50:12
+-- Tiempo de generación: 15-11-2017 a las 10:21:27
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -25,6 +25,33 @@ USE `AccesoDatos`;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `Aspectos`
+--
+
+CREATE TABLE `Aspectos` (
+  `id` int(11) NOT NULL,
+  `NombreAspecto` varchar(30) NOT NULL,
+  `idPersonaje` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Aspectos`
+--
+
+INSERT INTO `Aspectos` (`id`, `NombreAspecto`, `idPersonaje`) VALUES
+(3, 'Rammus guardian de las arenas', 28),
+(4, 'Rammus ninja', 28),
+(5, 'Rammus rey', 28),
+(6, 'Renekton furia sangrienta', 29),
+(7, 'Renekton fiesta en la piscina', 29),
+(8, 'Renekton guerras runicas', 29),
+(9, 'Corki trineo', 30),
+(10, 'Corki arcade', 30),
+(11, 'Corki baron rojo', 30);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `Personajes`
 --
 
@@ -40,37 +67,52 @@ CREATE TABLE `Personajes` (
 --
 
 INSERT INTO `Personajes` (`id`, `Nombre`, `Rol`, `Daño`) VALUES
-(2, 'Galio', 'Top', 'Magico'),
-(3, 'Poppy', 'Top', 'Fisico'),
-(7, 'Rammus', 'Jungla', 'Magico'),
-(8, 'Xin Zhao', 'Jungla', 'Fisico'),
-(9, 'Yorick', 'Top', 'Fisico'),
-(10, 'Fiora', 'Top', 'Fisico'),
-(12, 'Varus', 'ADC', 'Fisico'),
-(13, 'Janna', 'Support', 'Magico'),
-(14, 'Evelynn', 'Jungla', 'Magico'),
-(16, 'Riven', 'Top', 'Fisico'),
-(17, 'Jayce', 'Top', 'Fisico');
+(28, 'Rammus', 'Jungla', 'Magico'),
+(29, 'Renekton', 'Top', 'Fisico'),
+(30, 'Corki', 'Mid', 'Fisico');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `Aspectos`
+--
+ALTER TABLE `Aspectos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idPersonaje` (`idPersonaje`);
+
+--
 -- Indices de la tabla `Personajes`
 --
 ALTER TABLE `Personajes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `Aspectos`
+--
+ALTER TABLE `Aspectos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
 -- AUTO_INCREMENT de la tabla `Personajes`
 --
 ALTER TABLE `Personajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `Aspectos`
+--
+ALTER TABLE `Aspectos`
+  ADD CONSTRAINT `aspectos_ibfk_1` FOREIGN KEY (`idPersonaje`) REFERENCES `Personajes` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
