@@ -105,7 +105,36 @@ public class AccesoHibernate implements Interface{
 
 	@Override
 	public void AñadirVarios() {
-		// TODO Auto-generated method stub
+		Personaje p1 = new Personaje();
+		p1.setNombre("Kayn");
+		p1.setRol("Jungla");
+		p1.setTipo("Fisico");
+		
+		Aspecto a1 = new Aspecto();
+		a1.setIdPersonaje(p1);
+		a1.setNombreAspecto("Kayn segador de almas");
+		
+		Personaje p2 = new Personaje();
+		p1.setNombre("Ornn");
+		p1.setRol("Top");
+		p1.setTipo("Magico");
+		
+		Aspecto a2 = new Aspecto();
+		a1.setIdPersonaje(p1);
+		a1.setNombreAspecto("Ornn señor del trueno");
+		
+		
+		session.beginTransaction();
+
+		session.save(p1);
+		session.save(a1);
+		
+		session.save(p2);
+		session.save(a2);
+		
+		session.getTransaction().commit();
+
+		System.out.println("Fin Inserción Multiple");
 		
 	}
 
