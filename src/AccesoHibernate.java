@@ -146,7 +146,18 @@ public class AccesoHibernate implements Interface{
 
 	@Override
 	public void BorrarAll() {
-		// TODO Auto-generated method stub
+		System.out.println("Inicio Borrado");
+
+		session.beginTransaction();
+
+		Query q = session.createQuery("delete from Personaje");
+		q.executeUpdate();
+		q = session.createQuery("delete from Aspecto");
+		q.executeUpdate();
+		
+
+		session.getTransaction().commit();
+		System.out.println("Fin Borrado total");
 		
 	}
 
