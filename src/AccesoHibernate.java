@@ -1,8 +1,11 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 
@@ -33,7 +36,7 @@ public class AccesoHibernate implements Interface{
 		System.out.println("Seleccione una opción:");
 		int option = sc.nextInt();
 		if (option == 1) {
-			Consulta("SELECT * FROM Personajes", 1);
+			Consulta("select p from Personaje p", 1);
 		} else if (option == 2) {
 			Añadir();
 		} else if (option == 3) {
@@ -59,8 +62,21 @@ public class AccesoHibernate implements Interface{
 
 	@Override
 	public void Consulta(String query, int columna) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Inicio Consulta Simple Personajes");
+
+		Query q = session.createQuery(query);
+		List results = q.list();
+
+		Iterator personajesIterator = results.iterator();
+
+		while (personajesIterator.hasNext()) {
+			Personaje personaje = (Personaje) personajesIterator.next();
+
+			System.out.println("		Id: " + personaje.getId() + " - Nombre: " + personaje.getNombre());
+		}
+
+		System.out.println("Fin Consulta Personajes");
+
 	}
 
 	@Override

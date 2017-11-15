@@ -13,6 +13,9 @@ public class Personaje {
 		this.tipo = tipo;
 		
 	}
+	Personaje(){
+		
+	}
 
 	public int getId() {
 		return id;
