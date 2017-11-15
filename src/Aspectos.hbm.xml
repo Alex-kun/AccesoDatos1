@@ -11,15 +11,12 @@
 			<generator class="increment" />
 		</id>
 
-		<property name="nombre" type="string">
+		<property name="NombreAspecto" type="string">
 			<column name="NombreAspecto" length="30" not-null="true" />
 		</property>
 		
-		<property name="idpersonaje" type="int">
-			<column name="idPersonaje" length="10" not-null="false" />
-		</property>
 		
-		<many-to-one name="Personaje" column="id" not-null="true" />	
+		<many-to-one name="idPersonaje" column="idPersonaje" not-null="true" />	
 		
 		
 	</class>

@@ -19,7 +19,7 @@
 			<column name="Rol" length="20" not-null="false" />
 		</property>
 		
-		<property name="daño" type="string">
+		<property name="tipo" type="string">
 			<column name="Daño" length="20" not-null="false" />
 		</property>
 					

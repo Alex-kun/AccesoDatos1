@@ -3,6 +3,12 @@ public class Aspecto {
 	private int id;
 	private String NombreAspecto;
 	private Personaje idPersonaje;
+	
+	public Aspecto(int id, String nombreAspecto, Personaje idPersonaje) {
+		this.id = id;
+		NombreAspecto = nombreAspecto;
+		this.idPersonaje = idPersonaje;
+	}
 	public int getId() {
 		return id;
 	}
