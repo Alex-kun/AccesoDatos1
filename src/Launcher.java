@@ -9,6 +9,7 @@ public class Launcher {
 			System.out.println("¿Con que sistema quieres acceder al programa?");
 			System.out.println("1. SQL.");
 			System.out.println("2. Hibernate.");
+			System.out.println("3. JSON Remoto.");
 			opcion = sc.nextInt();
 			if(opcion == 1){
 				intento++;
@@ -18,6 +19,9 @@ public class Launcher {
 				intento++;
 				AccesoHibernate conH = new AccesoHibernate();
 				conH.menu();
+			} else if(opcion == 3){
+				intento++;
+				//ABRO PARTE PHP 
 			} else{
 				System.out.println("Escriba una opción valida.");
 			}

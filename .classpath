@@ -12,5 +12,8 @@
 	<classpathentry kind="lib" path="/Users/alejandroquiros/Documents/Lib Hibernate/jandex-2.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="/Users/alejandroquiros/Documents/Lib Hibernate/javassist-3.18.1-GA.jar"/>
 	<classpathentry kind="lib" path="/Users/alejandroquiros/Documents/Lib Hibernate/jboss-logging-3.3.0.Final.jar"/>
+	<classpathentry kind="lib" path="/Ejemplo_JSON_Remoto/lib/json/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/Ejemplo_JSON_Remoto/lib/json/okhttp-2.6.0.jar"/>
+	<classpathentry kind="lib" path="/Ejemplo_JSON_Remoto/lib/json/okio-1.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
