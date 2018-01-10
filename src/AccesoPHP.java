@@ -9,7 +9,7 @@ import org.json.simple.JSONValue;
 public class AccesoPHP {
 
 	ApiRequests encargadoPeticiones;
-	private String SERVER_PATH, GET_PLAYER, SET_PLAYER; // Datos de la conexion
+	private String SERVER_PATH, GET_PLAYER, SET_PLAYER,REMOVE_PLAYER; // Datos de la conexion
 
 	public AccesoPHP() {
 
@@ -18,18 +18,22 @@ public class AccesoPHP {
 		SERVER_PATH = "http://localhost/PHPADAT/BaloncestoJSONServer/";
 		GET_PLAYER = "leeJugadores.php";
 		SET_PLAYER = "escribirJugador.php";
+		REMOVE_PLAYER = "eliminarJugador.php";
 
 	}
 	public void menu(){
 		System.out.println("Que quieres hacer?");
 		System.out.println("1. Leer");
 		System.out.println("2. Escribir");
+		System.out.println("3. Eliminar personaje en concreto");
 		Scanner sc = new Scanner(System.in);
 		int opcion = sc.nextInt();
 		if(opcion == 1){
 			lee();
 		} else if(opcion == 2){
 			escribir();
+		} else if(opcion == 3){
+			eliminar();
 		}
 	}
 
@@ -113,6 +117,7 @@ public class AccesoPHP {
 				e.printStackTrace();
 				System.exit(-1);
 			}
+		menu();
 		return auxhm;
 	}
 	
@@ -158,7 +163,31 @@ public class AccesoPHP {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+        menu();
+	}
+	public void eliminar(){
+		System.out.println("Que personaje quieres eliminar?");
+		System.out.println("Especifique el ID: ");
+		Scanner sc = new Scanner(System.in);
+		int id = sc.nextInt();
+		System.out.println("Se va a proceder a eliminar el personaje con el ID "+id);
 		
+		
+		JSONObject peticionId = new JSONObject();
+		peticionId.put("peticion", "eliminar");
+		peticionId.put("personajeEliminar", id);
+		String json = peticionId.toJSONString();
+		System.out.println(json);
+		String url = SERVER_PATH + REMOVE_PLAYER;
+		 try {
+				String response = encargadoPeticiones.postRequest(url, json);
+				System.out.println(response);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		
+		menu();
 	}
 }
