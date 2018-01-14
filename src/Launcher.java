@@ -20,10 +20,10 @@ public class Launcher {
 				AccesoHibernate conH = new AccesoHibernate();
 				conH.menu();
 			} else if(opcion == 3){
-				intento++;
+				intento++; 
 				AccesoPHP php = new AccesoPHP();
 				php.menu();
-				//ABRO PARTE PHP 
+				//ABRO PARTE PHP
 			} else{
 				System.out.println("Escriba una opción valida.");
 			}
