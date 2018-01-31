@@ -10,6 +10,7 @@ public class Launcher {
 			System.out.println("1. SQL.");
 			System.out.println("2. Hibernate.");
 			System.out.println("3. JSON Remoto.");
+			System.out.println("4. Mongo.");
 			opcion = sc.nextInt();
 			if(opcion == 1){
 				intento++;
@@ -23,6 +24,11 @@ public class Launcher {
 				intento++; 
 				AccesoPHP php = new AccesoPHP();
 				php.menu();
+				//ABRO PARTE PHP
+			}else if(opcion == 4){
+				intento++; 
+				AccesoMongo mongo = new AccesoMongo();
+				mongo.menu();
 				//ABRO PARTE PHP
 			} else{
 				System.out.println("Escriba una opción valida.");
