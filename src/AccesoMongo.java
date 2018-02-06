@@ -103,6 +103,7 @@ public class AccesoMongo{
 		Document del = collection.findOneAndDelete(Filters.eq("nombre", nombre));
 		collection.deleteOne(del);
 		System.out.println("Personaje "+ nombre+ " eliminado correctamente.");
+		//menu
 		menu();
 	}
 
